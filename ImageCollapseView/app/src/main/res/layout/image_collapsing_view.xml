@@ -17,20 +17,20 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <com.lanltn.imagecollapseview.SquareLayout
+                <com.lanltn.imagecollapseview.ui.SquareLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
                     <ImageView
                         android:id="@+id/imv_one"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:src="@drawable/artist"
                         android:scaleType="centerCrop"/>
-                </com.lanltn.imagecollapseview.SquareLayout>
+                </com.lanltn.imagecollapseview.ui.SquareLayout>
 
-                <com.lanltn.imagecollapseview.SquareLayout
+                <com.lanltn.imagecollapseview.ui.SquareLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -41,7 +41,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/artist"
                         android:scaleType="centerCrop"/>
-                </com.lanltn.imagecollapseview.SquareLayout>
+                </com.lanltn.imagecollapseview.ui.SquareLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -51,7 +51,7 @@
                 android:orientation="horizontal"
                 android:weightSum="2">
 
-                <com.lanltn.imagecollapseview.SquareLayout
+                <com.lanltn.imagecollapseview.ui.SquareLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -62,9 +62,9 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/artist"
                         android:scaleType="centerCrop"/>
-                </com.lanltn.imagecollapseview.SquareLayout>
+                </com.lanltn.imagecollapseview.ui.SquareLayout>
 
-                <com.lanltn.imagecollapseview.SquareLayout
+                <com.lanltn.imagecollapseview.ui.SquareLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
@@ -75,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:src="@drawable/artist"
                         android:scaleType="centerCrop"/>
-                </com.lanltn.imagecollapseview.SquareLayout>
+                </com.lanltn.imagecollapseview.ui.SquareLayout>
             </LinearLayout>
 
         </LinearLayout>
