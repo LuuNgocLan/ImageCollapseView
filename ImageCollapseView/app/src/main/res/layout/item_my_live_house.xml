@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/bg_delete_item"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:src="@drawable/ic_delete" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/bg_item"-->
+        <!--android:gravity="center"-->
+        <!--android:tag="Bottom2">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="OPEN/START"-->
+                <!--android:textColor="#757575" />-->
+
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="ADV./DOOR	￥3,300 （税込・ドリンク代別）-->
+<!--"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="15sp" />-->
+
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
+
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/bg_item">-->
+
+        <!--<com.lanltn.imagecollapseview.ui.ImageCollapsingView-->
+            <!--android:id="@+id/imageCollapsingView"-->
+            <!--android:layout_width="142dp"-->
+            <!--android:layout_height="142dp">-->
+
+        <!--</com.lanltn.imagecollapseview.ui.ImageCollapsingView>-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_toEndOf="@+id/imageCollapsingView"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/date"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="2018.12.2 "-->
+                <!--android:textColor="#757575" />-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/title"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Amazon Fashion Week TOKYO 2019SS」 with  SPACE SHOWER …"-->
+                <!--android:textColor="#ffffff"-->
+                <!--android:textSize="15sp" />-->
+
+        <!--</LinearLayout>-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="4dp"-->
+            <!--android:layout_alignBottom="@+id/imageCollapsingView"-->
+            <!--android:layout_marginBottom="13dp">-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:src="@drawable/paginationdots" />-->
+        <!--</RelativeLayout>-->
+    <!--</RelativeLayout>-->
+
+
+</com.daimajia.swipe.SwipeLayout>
