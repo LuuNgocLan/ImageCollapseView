@@ -6,7 +6,7 @@
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical">
 
-    <com.lanltn.imagecollapseview.ImageCollapsingView
+    <com.lanltn.imagecollapseview.ui.ImageCollapsingView
         android:id="@+id/imageCollapsingView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ButtonDrawableView">
+
+        <attr name="textColorNormal" format="color" />
+
+        <attr name="textColorSelected" format="color" />
+
+        <attr name="text" format="string" />
+
+        <attr name="iconNormal" format="integer" />
+
+        <attr name="iconSelected" format="integer" />
+
+        <attr name="styleNormalBackground" format="enum">
+
+            <enum name="none" value="0" />
+
+            <enum name="strokeBorderWhite" value="1" />
+
+            <enum name="strokeBorderColor" value="2" />
+
+            <enum name="fillColor" value="3" />
+        </attr>
+
+        <attr name="styleSelectedBackground" format="enum">
+
+            <enum name="none" value="0" />
+
+            <enum name="strokeBorderWhite" value="1" />
+
+            <enum name="strokeBorderColor" value="2" />
+
+            <enum name="fillColor" value="3" />
+        </attr>
+
+        <attr name="styleButton" format="enum">
+
+            <enum name="noneBackground" value="1" />
+
+            <enum name="strokeBorderWhite" value="2" />
+
+            <enum name="strokeBorderColor" value="3" />
+
+        </attr>
+
+    </declare-styleable>
+</resources>
