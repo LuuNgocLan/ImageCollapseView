@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 
 import com.daimajia.swipe.util.Attributes;
 import com.lanltn.imagecollapseview.R;
-import com.lanltn.imagecollapseview.adapter.MyLiveAdapter;
 import com.lanltn.imagecollapseview.adapter.MyLiveHouseAdapter;
 import com.lanltn.imagecollapseview.models.MyLive;
 

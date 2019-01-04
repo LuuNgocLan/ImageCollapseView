@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.bumptech.glide.Glide;
 import com.lanltn.imagecollapseview.R;
 import com.lanltn.imagecollapseview.utills.ImageUtils;
 
@@ -42,24 +43,29 @@ public class ImageCollapsingView extends LinearLayout {
     private int[] idImageView = {R.id.imv_one, R.id.imv_two, R.id.imv_three, R.id.imv_four};
 
 
-    private List<Integer> imageIdList = new ArrayList<>();
+    private List<String> urlImageData = new ArrayList<>();
 
 
     //  ============================================================
     //  Constructor
     //  ============================================================
 
-    public ImageCollapsingView(Context context) {
+    public ImageCollapsingView(Context context)
+    {
         super(context);
         init();
     }
 
-    public ImageCollapsingView(Context context, AttributeSet attrs) {
+    public ImageCollapsingView(Context context, AttributeSet attrs)
+    {
         super(context, attrs);
         init();
     }
 
-    public ImageCollapsingView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public ImageCollapsingView(Context context,
+                               AttributeSet attrs,
+                               int defStyleAttr)
+    {
         super(context, attrs, defStyleAttr);
         init();
     }
@@ -77,51 +83,50 @@ public class ImageCollapsingView extends LinearLayout {
     //  Getters/Setters
     //  ========================================================
 
-    public void setImageIdList(List<Integer> imageIdList) {
+    public void setUrlImageData(List<String> urlImageData) {
 
-        this.imageIdList = imageIdList;
-        setImageDataToCollapse();
+        this.urlImageData = urlImageData;
+        setImageDataToCollapse(urlImageData);
     }
 
-    public void setImageDataList(List<String> imageUriList) {
-    }
 
     //  ===========================================================
     //  Methods
     //  ===========================================================
 
-    private void setImageDataToCollapse() {
+    public void setSingleImageToCollapsing(String urlImage){
+        setStyleImageCollapsingView(MIN_IMAGE);
+        setImageToImageView(idImageView[0], urlImage);
+    }
 
-        int sizeImageData = imageIdList.size();
+    public void setImageDataToCollapse(List<String> urlImageData) {
+
+        int sizeImageData = urlImageData.size();
         setStyleImageCollapsingView(sizeImageData);
 
         if (sizeImageData >= MAX_IMAGE) {
 
             for (int i = 0; i < MAX_IMAGE; i++) {
-                setImageToImageView(idImageView[i], imageIdList.get(i));
+                setImageToImageView(idImageView[i], urlImageData.get(i));
             }
 
         } else if (sizeImageData == 1) {
             //display first image
-            setImageToImageView(idImageView[0], imageIdList.get(0));
+            setImageToImageView(idImageView[0], urlImageData.get(0));
         } else {
 
-            for (int i = 0; i < imageIdList.size(); i++) {
-                setImageToImageView(idImageView[i], imageIdList.get(i));
+            for (int i = 0; i < this.urlImageData.size(); i++) {
+                setImageToImageView(idImageView[i], urlImageData.get(i));
             }
 
         }
     }
 
-    public void setImageToImageView(int id, int idImageDrawable) {
+    public void setImageToImageView(int id, String urlImage) {
         ImageView imageView = findViewById(id);
-        imageView.setImageDrawable(getResources().getDrawable(idImageDrawable));
-    }
-
-
-    public void setImageToImageView(int id, String uriImage) {
-        ImageView imageView = findViewById(id);
-        imageView.setImageURI(Uri.parse(uriImage));
+        Glide.with(getContext())
+                .load(urlImage)
+                .into(imageView);
     }
 
 
@@ -148,7 +153,7 @@ public class ImageCollapsingView extends LinearLayout {
         if (numImages == 1) {
             llImageTop.setWeightSum(1f);
             llImageBottom.setVisibility(GONE);
-            ((ImageView) findViewById(R.id.imv_two)).setVisibility(GONE);
+            (findViewById(R.id.imv_two)).setVisibility(GONE);
         }
     }
 

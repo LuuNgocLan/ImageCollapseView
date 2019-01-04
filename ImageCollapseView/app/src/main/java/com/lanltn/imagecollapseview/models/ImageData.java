@@ -2,35 +2,43 @@ package com.lanltn.imagecollapseview.models;
 
 import com.lanltn.imagecollapseview.R;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
 import java.util.List;
 
 public class ImageData {
-    private List<Integer> imageList;
+    private List<String> imageList;
 
     public ImageData() {
     }
 
-    public List<Integer> getImageList() {
+    public List<String> getImageList() {
         return imageList;
     }
 
-    public void setImageList(List<Integer> imageList) {
+    public void setImageList(List<String> imageList) {
         this.imageList = imageList;
     }
 
-    public static int[] getIdImageList() {
-        int[] idImageTestList = {
-                R.drawable.artist_02,
-                R.drawable.artist_04png,
-                R.drawable.artist_05,
-                R.drawable.artist_06png,
-                R.drawable.artist_07,
-                R.drawable.artist,
-                R.drawable.fes1,
-                R.drawable.fes2,
-                R.drawable.fes3
+    public static List<String> getUrlImageList() {
+        String[] urlImageTestList = {
+                "https://api.androidhive.info/images/nature/david1.jpg",
+                "https://api.androidhive.info/images/nature/1.jpg",
+                "https://api.androidhive.info/images/nature/2.jpg",
+                "https://api.androidhive.info/images/nature/3.jpg",
+                "https://api.androidhive.info/images/nature/4.jpg",
+                "https://api.androidhive.info/images/nature/5.jpg",
+                "https://api.androidhive.info/images/nature/6.jpg",
+                "https://api.androidhive.info/images/nature/7.jpg",
+                "https://api.androidhive.info/images/nature/8.jpg",
+                "https://api.androidhive.info/images/nature/9.jpg",
+                "https://api.androidhive.info/images/nature/10.jpg",
+                "https://api.androidhive.info/images/nature/11.jpg",
+                "https://api.androidhive.info/images/nature/12.jpg",
+                "https://api.androidhive.info/images/nature/13.jpg",
+                "https://api.androidhive.info/images/nature/14.jpg"
         };
-        return idImageTestList;
+        return Arrays.asList(urlImageTestList);
     }
 
 }

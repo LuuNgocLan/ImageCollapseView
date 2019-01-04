@@ -1,6 +1,7 @@
-package com.lanltn.imagecollapseview.adapter;
+package com.lanltn.imagecollapseview.modules.myArtist.adapter;
 
 import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,28 +12,31 @@ import android.widget.Toast;
 import com.daimajia.swipe.SwipeLayout;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.lanltn.imagecollapseview.R;
+import com.lanltn.imagecollapseview.databinding.ItemMyArtistBinding;
+import com.lanltn.imagecollapseview.models.ArtistModel;
 import com.lanltn.imagecollapseview.models.ImageData;
 import com.lanltn.imagecollapseview.ui.ImageCollapsingView;
-import com.lanltn.imagecollapseview.utills.ImageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class MyArtistAdapter extends RecyclerSwipeAdapter<MyArtistAdapter.RecyclerViewHolder> implements ImageCollapsingView.OnCollapsingImageListener {
-    private int[] idImageList_4 = ImageData.getIdImageList();
-    private List<Integer> idList_1;
+
     private Context mContext;
+    private List<ArtistModel> data;
 
-    public MyArtistAdapter(Context context) {
-        this.mContext = context;
 
+
+    public MyArtistAdapter() {
+        this.data = new ArrayList<>();
     }
 
     @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.item_my_artist, parent, false);
+        mContext = parent.getContext();
         return new RecyclerViewHolder(view);
     }
 
@@ -51,27 +55,35 @@ public class MyArtistAdapter extends RecyclerSwipeAdapter<MyArtistAdapter.Recycl
             @Override
             public void onClick(View view) {
                 mItemManger.removeShownLayouts(viewHolder.swipeLayout);
-//                mDataset.remove(position);
+                data.remove(position);
                 notifyItemRemoved(position);
-//                notifyItemRangeChanged(position, mDataset.size());
+                notifyItemRangeChanged(position, data.size());
                 mItemManger.closeAllItems();
                 Toast.makeText(view.getContext(), "Deleted!", Toast.LENGTH_SHORT).show();
             }
         });
 
-        idList_1 = new ArrayList<>();
-        Random rd = new Random();
-        int num_id = rd.nextInt(9);
-        idList_1.add(idImageList_4[num_id]);
-
-        viewHolder.imageCollapsingView.setImageIdList(idList_1);
-        viewHolder.imageCollapsingView.setOnCollapsingImageListener(this);
+        ArtistModel artistModel = data.get(position);
+        viewHolder.setViewModel(new MyArtistItemViewModel(artistModel, mContext));
 
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+        return this.data.size();
+    }
+
+    @Override
+    public void onViewAttachedToWindow(RecyclerViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        holder.bind();
+
+    }
+
+    @Override
+    public void onViewDetachedFromWindow(RecyclerViewHolder holder) {
+        super.onViewDetachedFromWindow(holder);
+        holder.unbind();
     }
 
     @Override
@@ -89,20 +101,47 @@ public class MyArtistAdapter extends RecyclerSwipeAdapter<MyArtistAdapter.Recycl
 
     }
 
-    public class RecyclerViewHolder extends RecyclerView.ViewHolder {
+    public void updateData(List<ArtistModel> data) {
+        if (data == null || data.isEmpty()) {
+            this.data.clear();
+        } else {
+            this.data.addAll(data);
+        }
+        notifyDataSetChanged();
+    }
+
+    static class RecyclerViewHolder extends RecyclerView.ViewHolder {
         SwipeLayout swipeLayout;
         ImageView imvDelete;
-        ImageCollapsingView imageCollapsingView;
+        ItemMyArtistBinding binding;
 
 
         public RecyclerViewHolder(View itemView) {
             super(itemView);
-            imageCollapsingView = itemView.findViewById(R.id.imageCollapsingView);
-            swipeLayout = itemView.findViewById(R.id.swipe);
-            imvDelete = itemView.findViewById(R.id.delete);
-            imageCollapsingView.setSizeButtonImage(16, 16);
-            imageCollapsingView.setStyleImageCollapsingView(1);
+            bind();
+            swipeLayout = binding.swipe;
+            imvDelete = binding.delete;
+        }
+
+        public void bind() {
+            if (binding == null) {
+                binding = DataBindingUtil.bind(itemView);
+            }
+        }
+
+        void unbind() {
+            if (binding != null) {
+                binding.unbind(); // Don't forget to unbind
+            }
+        }
+
+        /* package */ void setViewModel(MyArtistItemViewModel viewModel) {
+            if (binding != null) {
+                binding.setViewModel(viewModel);
+            }
         }
     }
+
+
 }
 

@@ -20,11 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class MyLiveHouseAdapter extends RecyclerSwipeAdapter<MyLiveHouseAdapter.RecyclerViewHolder> implements ImageCollapsingView.OnCollapsingImageListener {
-    private int[] idImageList_4 = {R.drawable.artist_1, R.drawable.fes2, R.drawable.fes3, R.drawable.artist_2};
-    private int[] idImageSource = ImageData.getIdImageList();
-    private List<Integer> idList_4;
-    private List<Integer> idList_1;
+public class MyLiveHouseAdapter extends RecyclerSwipeAdapter<MyLiveHouseAdapter.RecyclerViewHolder> {
     private Context mContext;
     private List<MyLive> myLiveList;
 
@@ -43,9 +39,6 @@ public class MyLiveHouseAdapter extends RecyclerSwipeAdapter<MyLiveHouseAdapter.
 
     @Override
     public void onBindViewHolder(final RecyclerViewHolder viewHolder, final int position) {
-        MyLive myLive = myLiveList.get(position);
-        viewHolder.date.setText(myLive.getDate());
-        viewHolder.title.setText(myLive.getTitle());
 
         mItemManger.bindView(viewHolder.itemView, position);
         viewHolder.swipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
@@ -57,29 +50,11 @@ public class MyLiveHouseAdapter extends RecyclerSwipeAdapter<MyLiveHouseAdapter.
             }
         });
 
-        idList_4 = new ArrayList<>();
-        for (int i : idImageList_4) {
-            idList_4.add(i);
-        }
-        idList_1 = new ArrayList<>();
-
-        //set data
-        Random rd = new Random();
-        int num = rd.nextInt(2);
-        if (num == 0) {
-            int num_id = rd.nextInt(9);
-            idList_1.add(idImageSource[num_id]);
-            viewHolder.imageCollapsingView.setImageIdList(idList_1);
-        } else {
-            viewHolder.imageCollapsingView.setImageIdList(idList_4);
-        }
-        viewHolder.imageCollapsingView.setOnCollapsingImageListener(this);
-
     }
 
     @Override
     public int getItemCount() {
-        return myLiveList.size();
+        return 10;
     }
 
     @Override
@@ -87,30 +62,13 @@ public class MyLiveHouseAdapter extends RecyclerSwipeAdapter<MyLiveHouseAdapter.
         return R.id.swipe;
     }
 
-    @Override
-    public void onClickPlayer() {
-        Toast.makeText(mContext, "Playing...", Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
-    public void onClickImageItem() {
-
-    }
-
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
         SwipeLayout swipeLayout;
-        ImageCollapsingView imageCollapsingView;
-        TextView date, title;
 
 
         public RecyclerViewHolder(View itemView) {
             super(itemView);
-            imageCollapsingView = itemView.findViewById(R.id.imageCollapsingView);
-
             swipeLayout = itemView.findViewById(R.id.swipe);
-            date = itemView.findViewById(R.id.date);
-            title = itemView.findViewById(R.id.title);
-            imageCollapsingView.setSizeButtonImage(48, 48);
         }
     }
 }

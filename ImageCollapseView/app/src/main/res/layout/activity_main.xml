@@ -1,70 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
-    tools:context=".views.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <com.lanltn.imagecollapseview.ui.ButtonDrawableView
-        android:id="@+id/btnNext"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp"
-        app:iconNormal="@drawable/ic_heart_normal"
-        app:iconSelected="@drawable/ic_heart_selected"
-        app:styleNormalBackground="strokeBorderWhite"
-        app:text="My Artist"
-        app:textColorNormal="@android:color/white"
-        app:textColorSelected="@android:color/white" />
+    <data>
 
-    <com.lanltn.imagecollapseview.ui.ButtonDrawableView
-        android:id="@+id/btn_2"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp"
-        app:iconNormal="@drawable/ic_cart_selected"
-        app:iconSelected="@drawable/ic_cart_normal"
-        app:styleNormalBackground="strokeBorderColor"
-        app:styleSelectedBackground="fillColor"
-        app:text="チケット購入"
-        app:textColorNormal="@color/colorAccent"
-        app:textColorSelected="@android:color/white" />
+        <variable
+            name="viewModel"
+            type="com.lanltn.imagecollapseview.modules.home.MainActivityViewModel" />
+    </data>
 
-    <com.lanltn.imagecollapseview.ui.ButtonDrawableView
-        android:id="@+id/btn_3"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp"
-        app:iconNormal="@drawable/ic_location_selected"
-        app:iconSelected="@drawable/ic_location_normal"
-        app:styleNormalBackground="none"
-        app:styleSelectedBackground="fillColor"
-        app:text="11月4日-11月11日"
-        app:textColorNormal="@android:color/white"
-        app:textColorSelected="@android:color/white" />
-
-    <com.lanltn.imagecollapseview.ui.ButtonDrawableView
-        android:id="@+id/btn_4"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="8dp"
-        app:iconNormal="@drawable/ic_location_selected"
-        app:iconSelected="@drawable/ic_location_normal"
-        app:text="11月4日"
-        app:styleButton="strokeBorderWhite"/>
-
-    <com.lanltn.imagecollapseview.ui.NonSwipeableViewPager
-        android:id="@+id/view_pager"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imv_background">
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="vertical"
+        tools:context=".modules.home.MainActivity">
+
+        <com.lanltn.imagecollapseview.ui.ButtonDrawableView
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            app:iconNormal="@drawable/ic_heart_normal"
+            app:iconSelected="@drawable/ic_heart_selected"
+            app:styleNormalBackground="strokeBorderWhite"
+            app:text="My Artist"
+            app:textColorNormal="@android:color/white"
+            app:textColorSelected="@android:color/white" />
+
+        <com.lanltn.imagecollapseview.ui.ButtonDrawableView
+            android:id="@+id/btn_2"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            app:iconNormal="@drawable/ic_cart_selected"
+            app:iconSelected="@drawable/ic_cart_normal"
+            app:styleNormalBackground="strokeBorderColor"
+            app:styleSelectedBackground="fillColor"
+            app:text="チケット購入"
+            app:textColorNormal="@color/colorAccent"
+            app:textColorSelected="@android:color/white" />
+
+        <com.lanltn.imagecollapseview.ui.ButtonDrawableView
+            android:id="@+id/btn_3"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            app:iconNormal="@drawable/ic_location_selected"
+            app:iconSelected="@drawable/ic_location_normal"
+            app:styleNormalBackground="none"
+            app:styleSelectedBackground="fillColor"
+            app:text="11月4日-11月11日"
+            app:textColorNormal="@android:color/white"
+            app:textColorSelected="@android:color/white" />
+
+        <com.lanltn.imagecollapseview.ui.ButtonDrawableView
+            android:id="@+id/btn_4"
+            android:layout_width="wrap_content"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="8dp"
+            app:iconNormal="@drawable/ic_location_selected"
+            app:iconSelected="@drawable/ic_location_normal"
+            app:styleButton="strokeBorderWhite"
+            app:text="11月4日" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabLayout"
@@ -77,8 +80,19 @@
             app:tabMode="fixed"
             app:tabSelectedTextColor="@android:color/white"
             app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
-            app:tabTextColor="#4d4d4d">
+            app:tabTextColor="#4d4d4d"
+            app:viewPager="@{viewPager}">
 
         </android.support.design.widget.TabLayout>
-    </com.lanltn.imagecollapseview.ui.NonSwipeableViewPager>
-</LinearLayout>
+
+        <com.lanltn.imagecollapseview.ui.NonSwipeableViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imv_background"
+            app:page_adapter="@{viewModel.mainPagerAdapter}">
+
+        </com.lanltn.imagecollapseview.ui.NonSwipeableViewPager>
+    </LinearLayout>
+
+</layout>

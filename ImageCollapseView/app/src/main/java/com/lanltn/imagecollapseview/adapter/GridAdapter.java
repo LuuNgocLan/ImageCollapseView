@@ -17,8 +17,7 @@ import java.util.Random;
 
 public class GridAdapter extends RecyclerView.Adapter<GridAdapter.RecyclerViewHolder> {
 
-    private int[] idImageList = ImageData.getIdImageList();
-    private List<Integer> idList_1;
+    private List<String> urlImages = ImageData.getUrlImageList();
 
     private Context mContext;
     private OnItemSelectedListener onItemSelectedListener;
@@ -39,12 +38,12 @@ public class GridAdapter extends RecyclerView.Adapter<GridAdapter.RecyclerViewHo
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        idList_1 = new ArrayList<>();
+        List<String> urlImage= new ArrayList<>();
         Random rd = new Random();
-        int num_id = rd.nextInt(9);
-        idList_1.add(idImageList[num_id]);
+        int num_id = rd.nextInt(urlImages.size());
+        urlImage.add(urlImages.get(num_id));
 
-        holder.imageCollapsingView.setImageIdList(idList_1);
+        holder.imageCollapsingView.setUrlImageData(urlImage);
         holder.imageCollapsingView.setOnCollapsingImageListener(new ImageCollapsingView.OnCollapsingImageListener() {
             @Override
             public void onClickPlayer() {

@@ -1,36 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.daimajia.swipe.SwipeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/swipe"
-    android:layout_marginBottom="4dp"
-    android:background="@drawable/bg_delete_item">
 
-    <LinearLayout
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:gravity="center">
-        <ImageView
-            android:id="@+id/delete"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:src="@drawable/ic_delete"/>
-    </LinearLayout>
-    <LinearLayout
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.lanltn.imagecollapseview.modules.myArtist.adapter.MyArtistItemViewModel" />
+    </data>
+
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_item">
-        <com.lanltn.imagecollapseview.ui.ImageCollapsingView
-            android:id="@+id/imageCollapsingView"
+        android:layout_marginBottom="4dp"
+        android:background="@drawable/bg_delete_item">
+
+        <LinearLayout
             android:layout_width="50dp"
-            android:layout_height="50dp"/>
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_delete" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="ABabあい愛アイ123456 "
-            android:layout_gravity="center_vertical"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
-</com.daimajia.swipe.SwipeLayout>
+            android:background="@drawable/bg_item">
+
+            <com.lanltn.imagecollapseview.ui.ImageCollapsingView
+                android:id="@+id/imageCollapsingView"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:artistImage="@{viewModel.urlImage}" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="@{viewModel.nameArtist}"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+    </com.daimajia.swipe.SwipeLayout>
+</layout>

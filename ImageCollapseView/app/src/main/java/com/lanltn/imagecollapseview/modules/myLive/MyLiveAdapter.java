@@ -1,4 +1,4 @@
-package com.lanltn.imagecollapseview.adapter;
+package com.lanltn.imagecollapseview.modules.myLive;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -15,17 +15,13 @@ import com.lanltn.imagecollapseview.models.ImageData;
 import com.lanltn.imagecollapseview.models.MyLive;
 import com.lanltn.imagecollapseview.ui.ImageCollapsingView;
 import com.lanltn.imagecollapseview.R;
-import com.lanltn.imagecollapseview.utills.ImageUtils;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class MyLiveAdapter extends RecyclerSwipeAdapter<MyLiveAdapter.RecyclerViewHolder> implements ImageCollapsingView.OnCollapsingImageListener {
-    private int[] idImageList_4 = {R.drawable.artist_1, R.drawable.fes2, R.drawable.fes3, R.drawable.artist_2};
-    private int[] idImageSource = ImageData.getIdImageList();
-    private List<Integer> idList_4;
-    private List<Integer> idList_1;
+    private List<String> urlImages = ImageData.getUrlImageList();
     private Context mContext;
     private List<MyLive> myLiveList;
 
@@ -69,21 +65,24 @@ public class MyLiveAdapter extends RecyclerSwipeAdapter<MyLiveAdapter.RecyclerVi
             }
         });
 
-        idList_4 = new ArrayList<>();
-        for (int i : idImageList_4) {
-            idList_4.add(i);
-        }
-        idList_1 = new ArrayList<>();
+        List<String> urlImage1 = new ArrayList<>();
+        urlImage1.add(urlImages.get(0));
+        urlImage1.add(urlImages.get(1));
+        urlImage1.add(urlImages.get(2));
+        urlImage1.add(urlImages.get(3));
+        urlImage1.add(urlImages.get(4));
+
+        List<String> urlImage2 = new ArrayList<>();
+        urlImage2.add(urlImages.get((new Random()).nextInt(urlImages.size())));
 
         //set data
         Random rd = new Random();
         int num = rd.nextInt(2);
         if (num == 0) {
             int num_id = rd.nextInt(9);
-            idList_1.add(idImageSource[num_id]);
-            viewHolder.imageCollapsingView.setImageIdList(idList_1);
+            viewHolder.imageCollapsingView.setUrlImageData(urlImage1);
         } else {
-            viewHolder.imageCollapsingView.setImageIdList(idList_4);
+            viewHolder.imageCollapsingView.setUrlImageData(urlImage2);
         }
         viewHolder.imageCollapsingView.setOnCollapsingImageListener(this);
 
